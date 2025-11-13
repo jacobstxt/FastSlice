@@ -1,0 +1,102 @@
+##############################
+#       BACKEND (.NET)       #
+##############################
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# Publish
+publish/
+*.pubxml
+*.publishproj
+
+# EF migrations cache
+Migrations/
+
+# ASP.NET config files (sensitive)
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+
+# Azure
+*.azurePubxml
+PublishScripts/
+
+# Generated files
+*_i.c
+*_p.c
+*.dll
+*.cache
+*.pdb
+
+# SQL Server
+*.mdf
+*.ldf
+
+# Logs
+*.log
+
+# Python cache (just in case)
+__pycache__/
+*.pyc
+
+
+##############################
+#       FRONTEND (Vite)      #
+##############################
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Builds
+dist/
+dist-ssr/
+
+# Local env
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+# System files
+.DS_Store
+
+
+##############################
+#        COMMON USE          #
+##############################
+
+# OS junk
+Thumbs.db
+ehthumbs.db
+
+# Editors
+.vscode/
+!.vscode/extensions.json
+
+# Backup files
+*.tmp
+*.bak
+*~
+
+# Package locks (optional)
+package-lock.json
