@@ -2,6 +2,7 @@
 using Core.Interfaces;
 using Core.Models.Category;
 using Domain;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Core.Services
@@ -9,6 +10,23 @@ namespace Core.Services
     public class CategoryService(AppDbContext Context,
     IMapper mapper, IImageService imageService) : ICategoryService
     {
+        public async Task Delete(long id)
+        {
+            var entity = await Context.Categories.Where(x => x.Id == id)
+            .FirstOrDefaultAsync();
+            entity!.IsDeleted = true;
+            await Context.SaveChangesAsync();
+        }
+
+        public async Task<CategoryItemModel> Create(CategoryCreateModel model)
+        {
+            var entity = mapper.Map<CategoryEntity>(model);
+            entity.Image = await imageService.SaveImageAsync(model.ImageFile!);
+            await Context.Categories.AddAsync(entity);
+            await Context.SaveChangesAsync();
+            var item = mapper.Map<CategoryItemModel>(entity);
+            return item;
+        }
 
         public async Task<CategoryItemModel?> GetItemById(int id)
         {
@@ -24,6 +42,24 @@ namespace Core.Services
            .ToListAsync();
             return model;
         }
+
+        public async Task<CategoryItemModel> Update(CategoryUpdateModel model)
+        {
+            var existing = await Context.Categories.Where(x => !x.IsDeleted).FirstOrDefaultAsync(x => x.Id == model.Id);
+
+            existing = mapper.Map(model, existing);
+
+            if (model.ImageFile != null)
+            {
+                await imageService.DeleteImageAsync(existing.Image);
+                existing.Image = await imageService.SaveImageAsync(model.ImageFile);
+            }
+            await Context.SaveChangesAsync();
+
+            var item = mapper.Map<CategoryItemModel>(existing);
+            return item;
+        }
+
 
     }
 
