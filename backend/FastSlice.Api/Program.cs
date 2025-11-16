@@ -26,11 +26,16 @@ namespace FastSlice.Api
             builder.Services.AddHttpClient();
 
             builder.Services.AddScoped<IImageService, ImageService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            builder.Services.AddCors();
+
             var app = builder.Build();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -44,6 +49,8 @@ namespace FastSlice.Api
 
 
             app.MapControllers();
+            app.UseStaticFiles();
+
 
             await app.SeedData();
 
