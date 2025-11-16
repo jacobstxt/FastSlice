@@ -1,0 +1,52 @@
+[
+  {
+    "Name": "Суші",
+    "Slug": "sushi",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/030/030/menu_icon-22-60x60-60x60.png"
+  },
+  {
+    "Name": "Суші сети",
+    "Slug": "sushi-sety",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/030/030/menu_icon-16-60x60-60x60.png"
+  },
+  {
+    "Name": "Піца",
+    "Slug": "pizza",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/030/030/menu_icon-21-60x60-60x60.png"
+  },
+  {
+    "Name": "Піца сети",
+    "Slug": "pizza-sety",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/030/030/menu_icon-15-60x60-60x60.png"
+  },
+  {
+    "Name": "WOK & Bowl",
+    "Slug": "wok-bowl",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/030/030/bezymjannyj-5-60x60.png"
+  },
+  {
+    "Name": "Салати",
+    "Slug": "salaty",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/030/030/menu_icon-18-60x60-60x60.png"
+  },
+  {
+    "Name": "Снеки",
+    "Slug": "sneky",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/030/030/menu_icon-19-60x60-60x60.png"
+  },
+  {
+    "Name": "Десерти",
+    "Slug": "deserty",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/desert-60x60.png"
+  },
+  {
+    "Name": "Напої",
+    "Slug": "napoi",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/030/030/menu_icon-17-60x60-01-60x60-60x60.png"
+  },
+  {
+    "Name": "Акції",
+    "Slug": "akcii",
+    "Image": "https://sushi-pizza39.com.ua/image/cache/catalog/for_menu/menu_icon-17-60x60-02-60x60.jpg"
+  }
+]
