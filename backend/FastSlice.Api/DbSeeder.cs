@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using Core.Constants;
 using Core.Interfaces;
 using Core.Models.Seeder;
 using Domain;
 using Domain.Entities;
+using Domain.Entities.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
@@ -13,6 +16,7 @@ namespace FastSlice.Api
         public static async Task SeedData(this WebApplication webApplication)
         {
             using var scope = webApplication.Services.CreateScope();
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<RoleEntity>>();
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
 
@@ -50,6 +54,19 @@ namespace FastSlice.Api
                     Console.WriteLine("Not Found File Categories.json");
                 }
             }
+
+            if (!context.Roles.Any())
+            {
+                foreach (var roleName in Roles.AllRoles)
+                {
+                    var result = await roleManager.CreateAsync(new(roleName));
+                    if (!result.Succeeded)
+                    {
+                        Console.WriteLine("Error Create Role {0}", roleName);
+                    }
+                }
+            }
+
 
 
         }

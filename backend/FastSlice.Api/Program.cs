@@ -1,3 +1,4 @@
+using Core.Extensions;
 using Core.Interfaces;
 using Core.Services;
 using Domain;
@@ -15,6 +16,8 @@ namespace FastSlice.Api
 
             builder.Services.AddDbContext<AppDbContext>(opt =>
               opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddIdentityConfiguration();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -41,7 +44,11 @@ namespace FastSlice.Api
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(options =>
+                {
+                    // Стандартний шлях для Swashbuckle
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "FastSlice API v1");
+                });
             }
         
             app.UseHttpsRedirection();
